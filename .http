@@ -1,0 +1,17 @@
+GET http://127.0.0.1:3000/Ping HTTP/1.1
+###
+GET http://127.0.0.1:3000/ HTTP/1.1
+###
+GET http://127.0.0.1:3000/api/blogs HTTP/1.1
+###
+POST http://127.0.0.1:3000/api/blogs HTTP/1.1
+Content-Type: application/json
+
+{
+    "author": "new one",
+    "url": "new.com",
+    "title": "The new one",
+    "likes": 10
+}
+###
+DELETE http://127.0.0.1:3000/api/blogs/4 HTTP/1.1
