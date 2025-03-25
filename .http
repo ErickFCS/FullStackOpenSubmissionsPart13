@@ -4,14 +4,57 @@ GET http://127.0.0.1:3000/ HTTP/1.1
 ###
 GET http://127.0.0.1:3000/api/blogs HTTP/1.1
 ###
+GET http://127.0.0.1:3000/api/blogs?search=the HTTP/1.1
+###
 POST http://127.0.0.1:3000/api/blogs HTTP/1.1
+Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAc2l0ZS5jb20iLCJpZCI6NiwiaWF0IjoxNzQyOTEyNzI2fQ.RvYRVoW3BDWSbQt0IHzsPZ0t2ZUmyy-8mh6umUADT9I
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjJAc2l0ZS5jb20iLCJpZCI6NywiaWF0IjoxNzQyOTEyNzQwfQ.onWh10v8_pwDy5hLH0_ARzJDqXtEdUgGBzvq5CKYmlE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6OCwiaWF0IjoxNzQyOTEyNzU0fQ.wYaAcs-ldLSuyIRsnbHI8S5ZNW6c3KG1Tuw2HijchbQ
+
+{
+    "author": "3@site.com",
+    "url": "three.site.com",
+    "title": "ninth site",
+    "likes": 0
+}
+###
+PUT http://127.0.0.1:3000/api/blogs/19 HTTP/1.1
+###
+DELETE http://127.0.0.1:3000/api/blogs/6 HTTP/1.1
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAc2l0ZS5jb20iLCJpZCI6NiwiaWF0IjoxNzQyOTEyNzI2fQ.RvYRVoW3BDWSbQt0IHzsPZ0t2ZUmyy-8mh6umUADT9I
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjJAc2l0ZS5jb20iLCJpZCI6NywiaWF0IjoxNzQyOTEyNzQwfQ.onWh10v8_pwDy5hLH0_ARzJDqXtEdUgGBzvq5CKYmlE
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6OCwiaWF0IjoxNzQyOTEyNzU0fQ.wYaAcs-ldLSuyIRsnbHI8S5ZNW6c3KG1Tuw2HijchbQ
+###
+GET http://127.0.0.1:3000/api/users HTTP/1.1
+###
+POST http://127.0.0.1:3000/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "author": "new one",
-    "url": "new.com",
-    "title": "The new one",
-    "likes": 10
+    "username": "3@site.com",
+    "password": "password"
 }
 ###
-DELETE http://127.0.0.1:3000/api/blogs/4 HTTP/1.1
+PUT http://127.0.0.1:3000/api/users/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "myusername"
+}
+###
+DELETE http://127.0.0.1:3000/api/users/4 HTTP/1.1
+###
+POST http://127.0.0.1:3000/api/login HTTP/1.1
+Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAc2l0ZS5jb20iLCJpZCI6NiwiaWF0IjoxNzQyOTEyNzI2fQ.RvYRVoW3BDWSbQt0IHzsPZ0t2ZUmyy-8mh6umUADT9I
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjJAc2l0ZS5jb20iLCJpZCI6NywiaWF0IjoxNzQyOTEyNzQwfQ.onWh10v8_pwDy5hLH0_ARzJDqXtEdUgGBzvq5CKYmlE
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6OCwiaWF0IjoxNzQyOTEyNzU0fQ.wYaAcs-ldLSuyIRsnbHI8S5ZNW6c3KG1Tuw2HijchbQ
+
+{
+    "username": "3@site.com",
+    "password": "password"
+}
+###
+GET http://127.0.0.1:3000/api/authors HTTP/1.1
+###

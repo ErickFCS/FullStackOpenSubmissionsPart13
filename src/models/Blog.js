@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from "../connection.js";
+import { sequelize } from "../connection.js";
 
 class Blog extends Model { }
 Blog.init({
@@ -9,19 +9,26 @@ Blog.init({
         autoIncrement: true
     },
     author: {
-        type: DataTypes.CHAR(50),
+        type: DataTypes.STRING
     },
     url: {
-        type: DataTypes.CHAR(50),
+        type: DataTypes.STRING,
         allowNull: false
     },
     title: {
-        type: DataTypes.CHAR(50),
+        type: DataTypes.STRING,
         allowNull: false
     },
     likes: {
         type: DataTypes.INTEGER,
-        defaultValue: 0
+        defaultValue: 0,
+        set() {
+            const prev = this.get("likes");
+            if (typeof prev === "number")
+                this.setDataValue("likes", prev + 1);
+            else
+                this.setDataValue("likes", 0);
+        }
     }
 }, {
     sequelize,
@@ -29,6 +36,5 @@ Blog.init({
     timestamps: false,
     modelName: "blog"
 });
-Blog.sync()
 
-export default Blog
+export default Blog;
