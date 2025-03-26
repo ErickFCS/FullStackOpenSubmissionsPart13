@@ -1,8 +1,7 @@
 import { Router } from "express";
 import models from "../models/index.js";
-import "express-async-errors";
 import { userSchema } from "../schemas.js";
-import { string } from "yup";
+import { boolean, number, string } from "yup";
 import { hash } from "bcrypt";
 
 const User = models.User;
@@ -19,6 +18,38 @@ users.get("/", async (req, res) => {
         }
     })).map((e) => (e.toJSON()));
     res.json(users);
+});
+
+users.get("/:id", async (req, res) => {
+    const userId = await number().integer("Id must be an integer").positive("Id must be positive").validate(req.params.id);
+    const readQuery = await boolean().validate(req.query.read);
+    let where = {
+        unread: !readQuery
+    };
+    if (readQuery === undefined) where = {};
+    const user = await User.findByPk(userId, {
+        include: [
+            {
+                model: Blog,
+                attributes: {
+                    exclude: ["userId"]
+                }
+            },
+            {
+                model: Blog,
+                as: "reading_list_blogs",
+                through: {
+                    attributes: [
+                        "id",
+                        "unread"
+                    ],
+                    where
+                }
+            }
+        ]
+    });
+    if (!user) throw { name: "NotFound", message: "Invalid Id" };
+    res.json(user);
 });
 
 users.post("/", async (req, res) => {

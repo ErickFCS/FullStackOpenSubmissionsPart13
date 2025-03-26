@@ -29,6 +29,19 @@ Blog.init({
             else
                 this.setDataValue("likes", 0);
         }
+    },
+    publicationYear: {
+        type: DataTypes.INTEGER,
+        validate: {
+            min: {
+                args: [1991],
+                msg: "The year must be after 1991"
+            },
+            max: {
+                args: [(new Date()).getFullYear()],
+                msg: "The book can't be writen in the future"
+            }
+        }
     }
 }, {
     sequelize,

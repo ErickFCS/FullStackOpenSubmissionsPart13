@@ -11,7 +11,8 @@ User.init({
     username: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate:{
+        unique: true,
+        validate: {
             isEmail: {
                 msg: "Username must be a valid email"
             }
@@ -20,6 +21,11 @@ User.init({
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    disable: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     }
 }, {
     sequelize,

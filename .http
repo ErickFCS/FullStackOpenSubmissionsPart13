@@ -1,38 +1,39 @@
+GET http://127.0.0.1:3000/ HTTP/1.1
+###
 GET http://127.0.0.1:3000/Ping HTTP/1.1
 ###
-GET http://127.0.0.1:3000/ HTTP/1.1
 ###
 GET http://127.0.0.1:3000/api/blogs HTTP/1.1
 ###
-GET http://127.0.0.1:3000/api/blogs?search=the HTTP/1.1
+GET http://127.0.0.1:3000/api/blogs?search=s HTTP/1.1
 ###
 POST http://127.0.0.1:3000/api/blogs HTTP/1.1
 Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAc2l0ZS5jb20iLCJpZCI6NiwiaWF0IjoxNzQyOTEyNzI2fQ.RvYRVoW3BDWSbQt0IHzsPZ0t2ZUmyy-8mh6umUADT9I
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjJAc2l0ZS5jb20iLCJpZCI6NywiaWF0IjoxNzQyOTEyNzQwfQ.onWh10v8_pwDy5hLH0_ARzJDqXtEdUgGBzvq5CKYmlE
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6OCwiaWF0IjoxNzQyOTEyNzU0fQ.wYaAcs-ldLSuyIRsnbHI8S5ZNW6c3KG1Tuw2HijchbQ
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6MSwiaWF0IjoxNzQzMDI5MDc1fQ.HYQ0y-UCiEPTzuJQ9CynF9MnvzTcXeHXf7kprTEy3mc
 
 {
-    "author": "3@site.com",
-    "url": "three.site.com",
+    "author": "author3",
+    "url": "author3.site.com",
     "title": "ninth site",
+    "publicationYear": "2001",
     "likes": 0
 }
 ###
 PUT http://127.0.0.1:3000/api/blogs/19 HTTP/1.1
 ###
 DELETE http://127.0.0.1:3000/api/blogs/6 HTTP/1.1
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAc2l0ZS5jb20iLCJpZCI6NiwiaWF0IjoxNzQyOTEyNzI2fQ.RvYRVoW3BDWSbQt0IHzsPZ0t2ZUmyy-8mh6umUADT9I
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjJAc2l0ZS5jb20iLCJpZCI6NywiaWF0IjoxNzQyOTEyNzQwfQ.onWh10v8_pwDy5hLH0_ARzJDqXtEdUgGBzvq5CKYmlE
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6OCwiaWF0IjoxNzQyOTEyNzU0fQ.wYaAcs-ldLSuyIRsnbHI8S5ZNW6c3KG1Tuw2HijchbQ
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAc2l0ZS5jb20iLCJpZCI6MSwiaWF0IjoxNzQzMDE5MzI0fQ.etrZ8CejjgDYBcvYLAv-iW8uHGbc1aH4xDMctjap1MY
+###
 ###
 GET http://127.0.0.1:3000/api/users HTTP/1.1
+###
+GET http://127.0.0.1:3000/api/users/1 HTTP/1.1
 ###
 POST http://127.0.0.1:3000/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "3@site.com",
+    "username": "1@site.com",
     "password": "password"
 }
 ###
@@ -45,16 +46,42 @@ Content-Type: application/json
 ###
 DELETE http://127.0.0.1:3000/api/users/4 HTTP/1.1
 ###
+###
+DELETE http://127.0.0.1:3000/api/logout HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6MSwiaWF0IjoxNzQzMDI5MjgzfQ.KDEdfAdTHHqn-0LJP2C4HHSQKp2GWPkD3C4YTTpJsNs
+###
+###
 POST http://127.0.0.1:3000/api/login HTTP/1.1
 Content-Type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAc2l0ZS5jb20iLCJpZCI6NiwiaWF0IjoxNzQyOTEyNzI2fQ.RvYRVoW3BDWSbQt0IHzsPZ0t2ZUmyy-8mh6umUADT9I
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjJAc2l0ZS5jb20iLCJpZCI6NywiaWF0IjoxNzQyOTEyNzQwfQ.onWh10v8_pwDy5hLH0_ARzJDqXtEdUgGBzvq5CKYmlE
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6OCwiaWF0IjoxNzQyOTEyNzU0fQ.wYaAcs-ldLSuyIRsnbHI8S5ZNW6c3KG1Tuw2HijchbQ
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6MSwiaWF0IjoxNzQzMDIxOTQwfQ.6tcpgbiuJBuZK7B2i8uiLArVKCw0NHfrCQkvSRUHp98
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjJAc2l0ZS5jb20iLCJpZCI6MiwiaWF0IjoxNzQzMDIxOTY3fQ.5regekJxumY34WkjPelft8LVxEB24AbksRlFoTjyN7c
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAc2l0ZS5jb20iLCJpZCI6MywiaWF0IjoxNzQzMDIxOTgwfQ.gvupWfSwg5_xFBklte-HA3UPXsO_bmhS9kL56hO7SYU
 
 {
     "username": "3@site.com",
     "password": "password"
 }
+###
+###
+POST http://127.0.0.1:3000/api/readinglist HTTP/1.1
+Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6MSwiaWF0IjoxNzQzMDIxOTQwfQ.6tcpgbiuJBuZK7B2i8uiLArVKCw0NHfrCQkvSRUHp98
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjJAc2l0ZS5jb20iLCJpZCI6MiwiaWF0IjoxNzQzMDIxOTY3fQ.5regekJxumY34WkjPelft8LVxEB24AbksRlFoTjyN7c
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjFAc2l0ZS5jb20iLCJpZCI6MywiaWF0IjoxNzQzMDIxOTgwfQ.gvupWfSwg5_xFBklte-HA3UPXsO_bmhS9kL56hO7SYU
+
+{
+    "userId": "1",
+    "blogId": "1"
+}
+###
+PUT http://127.0.0.1:3000/api/readinglist/1 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjNAc2l0ZS5jb20iLCJpZCI6MSwiaWF0IjoxNzQzMDIxOTQwfQ.6tcpgbiuJBuZK7B2i8uiLArVKCw0NHfrCQkvSRUHp98
+
+{
+    "read": true
+}
+###
 ###
 GET http://127.0.0.1:3000/api/authors HTTP/1.1
 ###

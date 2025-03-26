@@ -5,7 +5,8 @@ export const blogSchema = yup.object({
     author: yup.string().optional(),
     url: yup.string().required("The url must be givven"),
     title: yup.string().required("There must be a title"),
-    likes: yup.number().default(0)
+    likes: yup.number().default(0),
+    publicationYear: yup.number().required("There must be a publication year").min(1991, "The publication year must be after 1991").max((new Date()).getFullYear(), "The book can't be written in the future")
 });
 
 export const userSchema = yup.object({

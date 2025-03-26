@@ -1,6 +1,6 @@
+import { col, fn } from "sequelize";
 import { Router } from "express";
 import models from "../models/index.js";
-import { col, fn } from "sequelize";
 
 const authors = Router();
 const Blog = models.Blog;
